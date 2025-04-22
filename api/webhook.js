@@ -3,19 +3,19 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  const { name, email, phone } = req.body.data;
+  const { name = "Не указано", email = "", phone = "" } = req.body;
 
   try {
     const response = await fetch("https://api.keycrm.app/v1/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer MDQwMmMxNzdmNmRkMWNjY2NlZmU3ODhlZGY4ZDhkODk5Zjg1MWE2OQ"
+        Authorization: "Bearer ВСТАВЬ_ТВОЙ_API_КЛЮЧ"
       },
       body: JSON.stringify({
-        name: name || "Не указано",
-        email: email || "",
-        phone: phone || "",
+        name,
+        email,
+        phone,
         source: "Webflow"
       })
     });
