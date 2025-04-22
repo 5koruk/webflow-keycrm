@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const response = await fetch("https://api.keycrm.app/v1/leads", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
         Authorization: "Bearer ВСТАВЬ_ТВОЙ_API_КЛЮЧ"
       },
       body: JSON.stringify({
