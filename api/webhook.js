@@ -5,6 +5,14 @@ export default async function handler(req, res) {
 
   const { name, email, phone } = req.body;
 
+  const encoder = new TextEncoder();
+  const bodyBuffer = encoder.encode(JSON.stringify({
+    name,
+    email: email || "",
+    phone: phone || "",
+    source: "Webflow"
+  }));
+
   try {
     const response = await fetch("https://api.keycrm.app/api/v2/leads", {
       method: "POST",
@@ -12,12 +20,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json; charset=utf-8",
         Authorization: "Bearer MDQwMmMxNzdmNmRkMWNjY2NlZmU3ODhlZGY4ZDhkODk5Zjg1MWE2OQ"
       },
-      body: JSON.stringify({
-        name,
-        email: email || "",
-        phone: phone || "",
-        source: "Webflow"
-      })
+      body: bodyBuffer
     });
 
     if (!response.ok) {
