@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   const { name, email, phone } = req.body;
 
   const lead = {
-    full_name: name || "",
     email: email || "",
     phone: phone || "",
     source: "Webflow"
