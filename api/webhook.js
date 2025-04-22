@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const { name = "Не указано", email = "", phone = "" } = req.body;
 
   try {
-    const response = await fetch("https://api.keycrm.app/v1/leads", {
+    const response = await fetch("https://api.keycrm.app/v2/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
