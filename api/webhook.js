@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }));
 
   try {
-    const response = await fetch("https://api.keycrm.app/api/v2/leads", {
+    const response = await fetch("https://api.keycrm.app/api/v1/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
