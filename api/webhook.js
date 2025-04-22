@@ -6,17 +6,20 @@ export default async function handler(req, res) {
   const { name, email, phone } = req.body;
 
   const lead = {
-    email: email || "",
-    phone: phone || "",
+    contact: {
+      full_name: name || "Не указано",
+      email: email || "",
+      phone: phone || ""
+    },
     source: "Webflow"
   };
 
   try {
-    const response = await fetch("https://api.keycrm.app/v1/leads", {
+    const response = await fetch("https://api.keycrm.app/api/v2/leads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        Authorization: "Bearer MDQwMmMxNzdmNmRkMWNjY2NlZmU3ODhlZGY4ZDhkODk5Zjg1MWE2OQ"
+        Authorization: "Bearer ВАШ_API_КЛЮЧ"
       },
       body: JSON.stringify(lead)
     });
